@@ -131,6 +131,18 @@ form button[type='button'] {
 }
 
 
+form button[type='submit'] {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+
 .login-center-options{
   display: flex;
   justify-content: space-between;

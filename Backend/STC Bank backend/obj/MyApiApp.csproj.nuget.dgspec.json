@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj": {}
+    "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj": {}
   },
   "projects": {
-    "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj": {
+    "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj",
+        "projectUniqueName": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
         "projectName": "MyApiApp",
-        "projectPath": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj",
+        "projectPath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
         "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-        "outputPath": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\obj\\",
+        "outputPath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.Facebook": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
               "version": "[9.0.1, )"

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "uwJqCp7Z7Ok=",
+  "dgSpecHash": "19YUu0b0VFs=",
   "success": true,
-  "projectFilePath": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj",
+  "projectFilePath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dell\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\9.0.1\\microsoft.aspnetcore.authentication.facebook.9.0.1.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\9.0.1\\microsoft.aspnetcore.authentication.google.9.0.1.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.1\\microsoft.aspnetcore.authentication.jwtbearer.9.0.1.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.1\\microsoft.aspnetcore.cryptography.internal.9.0.1.nupkg.sha512",
