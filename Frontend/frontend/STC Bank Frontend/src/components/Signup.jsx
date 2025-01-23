@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import GoogleSvg from "../assets/icons8-google.svg"; 
@@ -6,6 +6,7 @@ import Logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { GoogleLogin } from "react-google-login";
+import FacebookLogin from 'react-facebook-login'; // Import FacebookLogin component
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import "./index.css"
@@ -13,6 +14,84 @@ import "./Signup.css";
 import "./responsive.css";
 
 const Signup = () => {
+
+  useEffect(() => {
+    const loadFacebookSDK = () => {
+      if (window.FB) {
+        window.FB.init({
+          appId: '9092235867539242',
+          cookie: true,
+          xfbml: true,
+          version: 'v12.0',
+        });
+        console.log("Facebook SDK initialized successfully.");
+      } else {
+        console.error("Facebook SDK initialization failed.");
+      }
+    };
+
+
+
+
+    (function (d, s, id) {
+      let js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js';
+      fjs.parentNode.insertBefore(js, fjs);
+
+      js.onload = loadFacebookSDK;
+    })(document, 'script', 'facebook-jssdk');
+  }, []);
+
+
+
+
+  const handleFacebookLogin = () => {
+    if (window.FB) {
+      window.FB.login(
+        (response) => {
+          if (response.authResponse) {
+            console.log('Facebook login successful:', response);
+            const { accessToken, userID } = response.authResponse;
+
+            toast.success("Facebook login successful!", {
+              position: "top-right",
+              autoClose: 5000,
+              theme: "colored",
+            });
+
+            // Optional: Fetch additional user data (like email or name)
+            window.FB.api('/me', { fields: 'name,email' }, (userInfo) => {
+              console.log('Facebook user info:', userInfo);
+              // Do something with userInfo (e.g., send to your backend)
+            });
+          } else {
+            console.error('Facebook login failed:', response);
+            toast.error("Facebook Signup failed, you close Signup Window.", {
+              position: "top-right",
+              autoClose: 5000,
+              theme: "colored",
+            });
+          }
+        },
+        { scope: 'email' }
+      );
+    } else {
+      console.error("Facebook SDK not loaded.");
+      toast.error("Facebook SDK not loaded, please try again later.", {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "colored",
+      });
+    }
+  };
+
+
+
+
+
   const clientId = "837942369513-ka2sp66d2fepp9ida4p05ls23nt9rvr5.apps.googleusercontent.com"; 
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,19 +102,13 @@ const Signup = () => {
     nationalId: "",
   });
 
-
-  
-
-  const [userId , setUserId] = useState(0)
-
+  const [userId , setUserId] = useState(0);
   const [National_ID_Google, Set_National_ID_Google] = useState({
-  nationalIdGoog: "",
+    nationalIdGoog: "",
   });
 
-  const [modalVisible, setModalVisible] = useState(false); // State for modal visibility
-  const [googleUser, setGoogleUser] = useState(null); // State to store Google user data
-
-
+  const [modalVisible, setModalVisible] = useState(false);
+  const [googleUser, setGoogleUser] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,8 +121,6 @@ const Signup = () => {
   const isValidPhoneNumber = (phoneNumber) => /^\d{11}$/.test(phoneNumber);
   const isValidNationalId = (nationalId) => /^\d{14}$/.test(nationalId);
 
-  
-  
   const handleGoogleSuccess = async (response) => {
     const user = response.profileObj;
     const googleSignUpRequest = {
@@ -74,8 +145,7 @@ const Signup = () => {
         autoClose: 5000,
         theme: "colored",
       });
-      setUserId(result.data.id)
-
+      setUserId(result.data.id);
       setGoogleUser(user); 
       setModalVisible(true); 
     } catch (error) {
@@ -89,7 +159,6 @@ const Signup = () => {
     }
   };
 
-  // Failure handler for Google login
   const handleGoogleFailure = (error) => {
     console.error("Google sign-in failed:", error);
     toast.error("Google sign-in failed, please try again.", {
@@ -171,9 +240,6 @@ const Signup = () => {
     }
   };
 
-
-
-
   const handleNationalIdSubmit = async () => {
     if (!National_ID_Google.nationalIdGoog) {
       toast.error("Please enter a valid National ID.", {
@@ -183,8 +249,7 @@ const Signup = () => {
       });
       return;
     }
-  
-    // Update National ID after validation
+
     const updateNationalIdRequest = {
       nationalId: National_ID_Google.nationalIdGoog,
     };
@@ -196,7 +261,7 @@ const Signup = () => {
         autoClose: 5000,
         theme: "colored",
       });
-      setModalVisible(false); // Close the modal after successful submission
+      setModalVisible(false);
     } catch (error) {
       console.error("Error during National ID update:", error);
       toast.error("Error during National ID update, please try again.", {
@@ -207,33 +272,40 @@ const Signup = () => {
     }
   };
 
-
-
-  
-
   const handleModalClose = async () => {
-      try {
-        await axios.delete(`http://localhost:5001/api/SignUp/${userId}`);
-        toast.success("You has been deleted due to missing National ID", {
-          position: "top-right",
-          autoClose: 5000,
-          theme: "colored",
-        });
-      } catch (error) {
-        console.error("Error during user deletion:", error);
-        toast.error("Error during user deletion.", {
-          position: "top-right",
-          autoClose: 5000,
-          theme: "colored",
-        });
-      }
-      setModalVisible(false);
-
+    try {
+      await axios.delete(`http://localhost:5001/api/SignUp/${userId}`);
+      toast.success("You have been deleted due to missing National ID", {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "colored",
+      });
+    } catch (error) {
+      console.error("Error during user deletion:", error);
+      toast.error("Error during user deletion.", {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "colored",
+      });
     }
+    setModalVisible(false);
+  };
 
-
+  const responseFacebook = (response) => {
+    console.log(response);
+    // Handle Facebook login success
+  };
 
   return (
+    <div>
+      {/* ToastContainer should be placed outside the constrained container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        theme="colored"
+        style={{ zIndex: 9999 }} // Ensure it's above other elements
+      />
+
     <div className="signup-main">
       <div className="signup-container">
         <div className="login-logo mb-5">
@@ -241,7 +313,6 @@ const Signup = () => {
           <h1 className="">STC</h1>
         </div>
 
-        {/* Local signup form */}
         <form className="signup-form" onSubmit={handleFormSubmit}>
           <input
             type="text"
@@ -305,57 +376,33 @@ const Signup = () => {
               onFailure={handleGoogleFailure}
               cookiePolicy="single_host_origin"
             />
-            <button className="facebook-btn">
-              <FontAwesomeIcon icon={faFacebook} />
-            </button>
+
+
+<button
+        onClick={handleFacebookLogin}
+        type="button" // Trigger Facebook login on click
+      >
+        <FontAwesomeIcon icon={faFacebook} className="facebook-icon" />
+      </button>
+
+
+
+
+
+
+
           </div>
+
+          <p className="signup-register">
+          Already have an account ? <Link to="/login" >Login Now !</Link>
+        </p>
+
         </form>
 
-        <p className="signup-register">
-          Already have an account? <Link to="/login">Login Now!</Link>
-        </p>
       </div>
-
-      {/* Modal */}
-      {/* Modal */}
-
-
-      {modalVisible && (
-      <div className="modal fade show" tabIndex="-1" role="dialog">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">National-ID needed to complete registration</h5>
-            </div>
-            <div className="modal-body">
-              <input
-                type="text"
-                name="nationalIdGoog"
-                value={National_ID_Google.nationalIdGoog}
-                onChange={(e) => Set_National_ID_Google({ ...National_ID_Google, nationalIdGoog: e.target.value })}
-                placeholder="Enter your National ID"
-                className="signup-form-input"
-              />
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" onClick={handleModalClose}>
-                Close
-              </button>
-              <button type="button" className="btn btn-primary" onClick={handleNationalIdSubmit}>
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    )}
-
-
-
-
-      <ToastContainer />
+    </div>
     </div>
   );
 };
 
-export default Signup; 
+export default Signup;

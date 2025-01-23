@@ -44,8 +44,8 @@
 
 
 .signup-container {
-  width: 500px;
-  padding: 0px 70px;
+  width: 600px;
+  padding: 3px 70px;
   margin-bottom: 40px;
   margin-top: 30px;
   background: rgba(255, 255, 255, 0.5);
@@ -137,7 +137,7 @@
 
 .signup-social {
   display: flex;
-  gap: 10px;
+  gap: 5px;
   justify-content: center;
 }
 
@@ -174,4 +174,32 @@
 
 .signup-register a:hover {
   text-decoration: underline;
+}
+
+
+/* Facebook button styles */
+.facebook-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white !important;
+  border: none !important;
+  font-size: 16px !important;
+  border-radius: 5px !important;
+  cursor: pointer;
+  width: 100%; /* Responsive design */
+  box-sizing: border-box; /* Ensures the width behaves correctly */
+}
+
+.facebook-btn:hover {
+  background-color: #165eab !important; /* Darker blue on hover */
+}
+
+.facebook-btn:disabled {
+  background-color: #ccc !important; /* Disabled state */
+}
+
+.facebook-icon {
+  margin-right: 10px !important; /* Spacing between icon and text */
+  font-size: 20px !important; /* Icon size */
 }
