@@ -60,6 +60,22 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Authentication.Facebook/9.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "Microsoft.AspNetCore.Authentication.Google/9.0.1": {
         "type": "package",
         "compile": {
@@ -1818,6 +1834,21 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Authentication.Facebook/9.0.1": {
+      "sha512": "h36qF2yx4wwh6n9ahrz640ntGMYeCYBbPut3T1NWt/r+c/+70NCklIKHIbyIjVrwIIcsUF1e7/mudDikmyutGQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.authentication.facebook/9.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.dll",
+        "lib/net9.0/Microsoft.AspNetCore.Authentication.Facebook.xml",
+        "microsoft.aspnetcore.authentication.facebook.9.0.1.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.facebook.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication.Google/9.0.1": {
@@ -5054,6 +5085,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Microsoft.AspNetCore.Authentication.Facebook >= 9.0.1",
       "Microsoft.AspNetCore.Authentication.Google >= 9.0.1",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.1",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 9.0.1",
@@ -5071,11 +5103,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj",
+      "projectUniqueName": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
       "projectName": "MyApiApp",
-      "projectPath": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\MyApiApp.csproj",
+      "projectPath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
       "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "D:\\studying section\\projects\\GP\\STC Backend App\\STC Bank backend\\obj\\",
+      "outputPath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5114,6 +5146,10 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Facebook": {
+            "target": "Package",
+            "version": "[9.0.1, )"
+          },
           "Microsoft.AspNetCore.Authentication.Google": {
             "target": "Package",
             "version": "[9.0.1, )"
