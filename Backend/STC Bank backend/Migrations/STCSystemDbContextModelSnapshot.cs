@@ -33,6 +33,9 @@ namespace MyApiApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("FacebookId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Gmail")
                         .HasColumnType("nvarchar(max)");
 

@@ -53,30 +53,69 @@ const Signup = () => {
       window.FB.login(
         (response) => {
           if (response.authResponse) {
-            console.log('Facebook login successful:', response);
+            console.log("Facebook login successful:", response);
             const { accessToken, userID } = response.authResponse;
-
-            toast.success("Facebook login successful!", {
-              position: "top-right",
-              autoClose: 5000,
-              theme: "colored",
-            });
-
-            // Optional: Fetch additional user data (like email or name)
-            window.FB.api('/me', { fields: 'name,email' }, (userInfo) => {
-              console.log('Facebook user info:', userInfo);
-              // Do something with userInfo (e.g., send to your backend)
-            });
+  
+            // Fetch additional user data (like name and email)
+            window.FB.api(
+              "/me",
+              { fields: "name,email" },
+              async (userInfo) => {
+                console.log("Facebook user info:", userInfo);
+  
+                const facebookSignUpRequest = {
+                  FacebookId: userID,
+                  UserName: userInfo.name,
+                  Email: userInfo.email,
+                  Gmail:userInfo.Gmail
+                };
+  
+                // Post the request to your backend
+                try {
+                  toast.loading("Signing up with Facebook, please wait...", {
+                    position: "top-right",
+                    theme: "colored",
+                    autoClose: false,
+                  });
+  
+                  const result = await axios.post(
+                    "http://localhost:5001/api/SignUp/Facebook",
+                    facebookSignUpRequest
+                  );
+  
+                  console.log("User signed up successfully:", result.data);
+  
+                  toast.dismiss();
+                  toast.success("User signed up successfully!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    theme: "colored",
+                  });
+                } catch (error) {
+                  console.error("Error during Facebook sign-up:", error);
+  
+                  toast.dismiss();
+                  toast.error(
+                    error.response.data,
+                    {
+                      position: "top-right",
+                      autoClose: 5000,
+                      theme: "colored",
+                    }
+                  );
+                }
+              }
+            );
           } else {
-            console.error('Facebook login failed:', response);
-            toast.error("Facebook Signup failed, you close Signup Window.", {
+            console.error("Facebook login failed:", response);
+            toast.error("Facebook sign-up failed. Please try again.", {
               position: "top-right",
               autoClose: 5000,
               theme: "colored",
             });
           }
         },
-        { scope: 'email' }
+        { scope: "email" }
       );
     } else {
       console.error("Facebook SDK not loaded.");
@@ -87,6 +126,7 @@ const Signup = () => {
       });
     }
   };
+  
 
 
 
@@ -151,7 +191,7 @@ const Signup = () => {
     } catch (error) {
       console.error("Error during Google sign-up:", error);
       toast.dismiss();
-      toast.error("Error during Google sign-up, please try again.", {
+      toast.error(error.response.data, {
         position: "top-right",
         autoClose: 5000,
         theme: "colored",
