@@ -11,8 +11,8 @@ using STC.Data.Context;
 namespace MyApiApp.Migrations
 {
     [DbContext(typeof(STCSystemDbContext))]
-    [Migration("20250121010503_AddUniqueConstraints")]
-    partial class AddUniqueConstraints
+    [Migration("20250123175824_AddSignUpTable")]
+    partial class AddSignUpTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace MyApiApp.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FacebookId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gmail")
                         .HasColumnType("nvarchar(max)");

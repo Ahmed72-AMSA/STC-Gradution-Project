@@ -57,6 +57,9 @@ namespace STC.Models
 
         public string? Gmail { get; set; }
 
+        public string? FacebookId{get;set;}
+
+
 
 
 

@@ -114,6 +114,16 @@ namespace STC.Controllers
                 return BadRequest(ModelState);
             }
 
+        var existingAccount = await _context.Users
+        .FirstOrDefaultAsync(u=>u.Email == googleSignUpRequest.Email);
+
+
+
+       if(existingAccount != null){
+        return BadRequest("You Already Signed-Up by this Account");
+        }
+
+
             var existingUser = await _context.Users
                 .FirstOrDefaultAsync(u => u.Gmail == googleSignUpRequest.Gmail);
 
@@ -196,47 +206,57 @@ public async Task<IActionResult> GoogleSignUpNationalId(int userId, [FromBody] N
 
 
 
-        [HttpPost("Facebook")]
-        public async Task<IActionResult> FacebookSignUp([FromBody] GoogleSignUpRequest googleSignUpRequest)
-        {
-            if (googleSignUpRequest == null)
-            {
-                return BadRequest("Google sign-up data is null.");
-            }
+[HttpPost("Facebook")]
+public async Task<IActionResult> FacebookSignUp([FromBody] FacebookSignUpRequest facebookSignUpRequest)
+{
+    if (facebookSignUpRequest == null)
+    {
+        return BadRequest("Facebook sign-up data is null.");
+    }
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
 
-            var existingUser = await _context.Users
-                .FirstOrDefaultAsync(u => u.Gmail == googleSignUpRequest.Gmail);
+    var existingUser = await _context.Users
+        .FirstOrDefaultAsync(u => u.FacebookId == facebookSignUpRequest.FacebookId);
+    
+    var existingAccount = await _context.Users
+    .FirstOrDefaultAsync(u=>u.Email == facebookSignUpRequest.Email);
 
-            if (existingUser != null)
-            {
-                return BadRequest("User already exists with this Gmail.");
-            }
 
-            var signUp = new SignUp
-            {
-            
-                UserName = googleSignUpRequest.UserName,
-                Gmail = googleSignUpRequest.Gmail,
-                Email = googleSignUpRequest.Email,
-                Password = "gmail registration",
-                PhoneNumber = "gmail registration",
-                NationalId = "Not entered yet"
 
-            
-            
+    if(existingAccount != null){
+        return BadRequest("You Already Signed-Up by this Account");
+    }
 
-            };
 
-            _context.Users.Add(signUp);
-            await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetSignUp), new { id = signUp.Id }, signUp);
-        }
+
+    if (existingUser != null)
+    {
+        return BadRequest("User already exists with this Facebook ID.");
+    }
+
+    var signUp = new SignUp
+    {
+        UserName = facebookSignUpRequest.UserName,
+        Email = facebookSignUpRequest.Email,
+        FacebookId = facebookSignUpRequest.FacebookId,
+        Password = "facebook registration",
+        PhoneNumber = "facebook registration",
+        NationalId = "Not entered yet",
+        Gmail = facebookSignUpRequest.Gmail,
+
+    };
+
+    _context.Users.Add(signUp);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(nameof(GetSignUp), new { id = signUp.Id }, signUp);
+}
+
 
 
 

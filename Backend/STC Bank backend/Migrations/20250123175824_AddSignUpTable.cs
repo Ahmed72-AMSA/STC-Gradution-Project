@@ -5,7 +5,7 @@
 namespace MyApiApp.Migrations
 {
     /// <inheritdoc />
-    public partial class AddUniqueConstraints : Migration
+    public partial class AddSignUpTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -21,7 +21,8 @@ namespace MyApiApp.Migrations
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NationalId = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Gmail = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Gmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FacebookId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
