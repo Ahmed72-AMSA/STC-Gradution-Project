@@ -377,14 +377,7 @@ const Signup = () => {
             placeholder="Password"
             className="signup-form-input"
           />
-          <input
-            type="text"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleInputChange}
-            placeholder="Phone Number"
-            className="signup-form-input"
-          />
+          
           <input
             type="text"
             name="nationalId"

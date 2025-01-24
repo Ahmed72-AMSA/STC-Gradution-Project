@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj": {}
+    "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj": {}
   },
   "projects": {
-    "C:\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj": {
+    "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
+        "projectUniqueName": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
         "projectName": "MyApiApp",
-        "projectPath": "C:\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
-        "packagesPath": "C:\\Users\\atree\\.nuget\\packages\\",
-        "outputPath": "C:\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\obj\\",
+        "projectPath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\MyApiApp.csproj",
+        "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+        "outputPath": "D:\\studying section\\projects\\GP\\STC-Gradution-Project\\Backend\\STC Bank backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\atree\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -84,9 +84,17 @@
               "target": "Package",
               "version": "[9.0.1, )"
             },
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[9.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[7.2.0, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.8.2, )"
             }
           },
           "imports": [
@@ -108,7 +116,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

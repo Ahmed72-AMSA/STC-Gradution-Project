@@ -10,7 +10,6 @@ namespace STC.Models
         public string? Gmail { get; set; }
 
 
-       public string? NationalId { get; set; } ="Not entered yet";
 
 
 

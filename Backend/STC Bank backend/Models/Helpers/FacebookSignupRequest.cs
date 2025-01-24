@@ -9,6 +9,5 @@ namespace STC.Models
         
         public string? FacebookId { get; set; }
 
-        public string? NationalId { get; set; } = "Not entered yet";
     }
 }

@@ -75,7 +75,6 @@ namespace STC.Controllers
             signUp.Email = updatedSignUp.Email;
             signUp.Password = updatedSignUp.Password;
             signUp.PhoneNumber = updatedSignUp.PhoneNumber;
-            signUp.NationalId = updatedSignUp.NationalId;
 
             // Save the changes to the database
             await _context.SaveChangesAsync();
@@ -140,7 +139,6 @@ namespace STC.Controllers
                 Email = googleSignUpRequest.Email,
                 Password = "gmail registration",
                 PhoneNumber = "gmail registration",
-                NationalId = "Not entered yet"
 
             
             
@@ -155,53 +153,7 @@ namespace STC.Controllers
 
 
 
-[HttpPut("Google/NationalId/{userId}")]
-public async Task<IActionResult> GoogleSignUpNationalId(int userId, [FromBody] NationalIdRequestGoogle request)
-{
-    if (request == null || string.IsNullOrWhiteSpace(request.NationalId))
-    {
-        return BadRequest("National ID is required.");
-    }
 
-
- if (!System.Text.RegularExpressions.Regex.IsMatch(request.NationalId, @"^\d{14}$"))
-    {
-        return BadRequest("National ID must be exactly 14 digits.");
-    }
-
-
-    // Check if the National ID is already registered
-    var existingUserWithNationalId = await _context.Users
-        .FirstOrDefaultAsync(u => u.NationalId == request.NationalId);
-
-    if (existingUserWithNationalId != null)
-    {
-        return BadRequest($"This National ID is already registered for another user or you already has an account");
-    }
-
-
-
-    var user = await _context.Users
-        .FirstOrDefaultAsync(u => u.Id == userId);
-
-    if (user == null)
-    {
-        return NotFound($"User not found with ID {userId}.");
-    }
-
-    user.NationalId = request.NationalId;
-
-    _context.Entry(user).Property(u => u.NationalId).IsModified = true;
-    _context.Users.Update(user);
-    await _context.SaveChangesAsync();
-
-    return Ok(new
-    {
-        Message = "National ID updated successfully.",
-        UserId = user.Id,
-        NationalId = user.NationalId
-    });
-}
 
 
 
@@ -246,7 +198,6 @@ public async Task<IActionResult> FacebookSignUp([FromBody] FacebookSignUpRequest
         FacebookId = facebookSignUpRequest.FacebookId,
         Password = "facebook registration",
         PhoneNumber = "facebook registration",
-        NationalId = "Not entered yet",
         Gmail = facebookSignUpRequest.Gmail,
 
     };
@@ -260,53 +211,7 @@ public async Task<IActionResult> FacebookSignUp([FromBody] FacebookSignUpRequest
 
 
 
-[HttpPut("Facebook/NationalId/{userId}")]
-public async Task<IActionResult> FacebookSignUpNationalId(int userId, [FromBody] NationalIdRequestGoogle request)
-{
-    if (request == null || string.IsNullOrWhiteSpace(request.NationalId))
-    {
-        return BadRequest("National ID is required.");
-    }
 
-
- if (!System.Text.RegularExpressions.Regex.IsMatch(request.NationalId, @"^\d{14}$"))
-    {
-        return BadRequest("National ID must be exactly 14 digits.");
-    }
-
-
-    // Check if the National ID is already registered
-    var existingUserWithNationalId = await _context.Users
-        .FirstOrDefaultAsync(u => u.NationalId == request.NationalId);
-
-    if (existingUserWithNationalId != null)
-    {
-        return BadRequest($"This National ID is already registered for another user or you already has an account");
-    }
-
-
-
-    var user = await _context.Users
-        .FirstOrDefaultAsync(u => u.Id == userId);
-
-    if (user == null)
-    {
-        return NotFound($"User not found with ID {userId}.");
-    }
-
-    user.NationalId = request.NationalId;
-
-    _context.Entry(user).Property(u => u.NationalId).IsModified = true;
-    _context.Users.Update(user);
-    await _context.SaveChangesAsync();
-
-    return Ok(new
-    {
-        Message = "National ID updated successfully.",
-        UserId = user.Id,
-        NationalId = user.NationalId
-    });
-}
 
 
 

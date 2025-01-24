@@ -162,8 +162,6 @@ D:\studying section\projects\GP\STC Backend App\STC Bank backend\bin\Debug\net9.
 D:\studying section\projects\GP\STC Backend App\STC Bank backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\appsettings.Development.json
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\appsettings.json
-D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\package-lock.json
-D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\package.json
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\MyApiApp.staticwebassets.endpoints.json
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\MyApiApp.exe
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\MyApiApp.deps.json
@@ -324,3 +322,5 @@ D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\o
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\obj\Debug\net9.0\MyApiApp.pdb
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\obj\Debug\net9.0\MyApiApp.genruntimeconfig.cache
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\obj\Debug\net9.0\ref\MyApiApp.dll
+D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\Newtonsoft.Json.dll
+D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\Twilio.dll
