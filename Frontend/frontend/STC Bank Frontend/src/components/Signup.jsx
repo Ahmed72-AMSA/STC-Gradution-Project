@@ -56,7 +56,6 @@ const Signup = () => {
             console.log("Facebook login successful:", response);
             const { accessToken, userID } = response.authResponse;
   
-            // Fetch additional user data (like name and email)
             window.FB.api(
               "/me",
               { fields: "name,email" },
