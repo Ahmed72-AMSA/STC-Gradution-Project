@@ -2,5 +2,5 @@ public class EmailRequest
 {
     public string? To { get; set; }
     public string? Subject { get; set; }
-    public string? body { get; set; }
+    public string? bod { get; set; }
 }
