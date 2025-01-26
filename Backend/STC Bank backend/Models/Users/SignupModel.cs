@@ -1,12 +1,10 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace STC.Models
 {
     public class SignUp
     {
-       public int? Id { get; set; }
+       public int Id { get; set; }
 
 
 
@@ -42,17 +40,6 @@ namespace STC.Models
 
 
 
-
-
-
-
-
-
-
-
-        [Required(ErrorMessage = "National ID is required")]
-        [RegularExpression(@"^\d{14}$", ErrorMessage = "National ID must be exactly 14 digits.")]
-        public string? NationalId { get; set; } = "Not entered yet";
 
 
         public string? Gmail { get; set; }

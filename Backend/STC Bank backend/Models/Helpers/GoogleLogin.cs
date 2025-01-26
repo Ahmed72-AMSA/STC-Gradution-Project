@@ -5,4 +5,4 @@ public class GoogleLogin
     public string? Gmail { get; set; }
 }
 
-}
+

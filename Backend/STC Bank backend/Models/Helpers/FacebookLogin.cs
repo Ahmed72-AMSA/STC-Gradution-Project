@@ -1,8 +1,9 @@
-namespace STC.Models
-{
-    public class FacebookLogin
-    {
-    public string? FacebookId { get; set; }
 
-    }
+namespace STC.Models {
+
+public class FacebookLogin
+{
+    public string? FacebookId { get; set; }
+}
+
 }

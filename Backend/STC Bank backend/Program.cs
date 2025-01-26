@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.EntityFrameworkCore;
 using STC.Data.Context;
+using STC.Helpers;
+using STC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,9 +23,13 @@ builder.Services.AddCors(options =>
 });
 
 
-
+builder.Services.AddMemoryCache();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.Configure<TwilioSettings>(builder.Configuration.GetSection("Twilio"));
+builder.Services.AddTransient<ISMSService,SMSService>();
+builder.Services.AddTransient<IOTPService,OTPService>();
+
 
 var app = builder.Build();
 
