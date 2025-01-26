@@ -102,5 +102,95 @@ namespace STC.Controllers
                 Message = "OTP verified successfully."
             });
         }
+
+
+
+[HttpPost("GoogleLogin")]
+public async Task<IActionResult> GoogleLogin([FromBody] GoogleLogin googleLoginRequest)
+{
+    if (googleLoginRequest == null)
+    {
+        return BadRequest("Google login data is null.");
+    }
+
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    // Find the user by Gmail
+    var user = await _context.Users
+        .FirstOrDefaultAsync(u => u.Gmail == googleLoginRequest.Gmail);
+
+    if (user == null)
+    {
+        return Unauthorized("Invalid Gmail.");
+    }
+
+    // Generate a 6-digit OTP
+    var otp = _otpService.GenerateOtp();
+
+    // Log the generated OTP for debugging
+    Console.WriteLine($"Generated OTP: {otp} for Phone Number: {user.PhoneNumber}");
+
+    // Send the OTP via SMS
+    _smsService.Send(user.PhoneNumber, $"Your OTP is {otp}. It expires in 5 minutes");
+
+    return Ok(new
+    {
+        Message = $"Login successful. OTP sent to your registered phone number."
+    });
+    
+}
+
+
+
+
+[HttpPost("FacebookLogin")]
+public async Task<IActionResult> FacebookLogin([FromBody] FacebookLogin FBLogin)
+{
+    if (FBLogin == null)
+    {
+        return BadRequest("Facebook login data is null.");
+    }
+
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    // Find the user by Gmail
+    var user = await _context.Users
+        .FirstOrDefaultAsync(u => u.FacebookId == FBLogin.FacebookId);
+
+    if (user == null)
+    {
+        return Unauthorized("Invalid Facebook ID.");
+    }
+
+    // Generate a 6-digit OTP
+    var otp = _otpService.GenerateOtp();
+
+    // Log the generated OTP for debugging
+    Console.WriteLine($"Generated OTP: {otp} for Phone Number: {user.PhoneNumber}");
+
+    // Send the OTP via SMS
+    _smsService.Send(user.PhoneNumber, $"Your OTP is {otp}. It expires in 5 minutes");
+
+    return Ok(new
+    {
+        Message = $"Login successful. OTP sent to your registered phone number."
+    });
+
+
+
+
+
+
     }
 }
+}
+
+
+
+
