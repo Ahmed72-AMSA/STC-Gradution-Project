@@ -369,3 +369,6 @@ AssemblyInfo.cs
 *.cache
 *.csv
 data
+application_data
+training_checkpoints
+*.h5
