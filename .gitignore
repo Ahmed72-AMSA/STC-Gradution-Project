@@ -373,3 +373,8 @@ application_data
 training_checkpoints
 *.venv
 *.h5
+appsettings.Development.js
+MyApiApp.AssemblyInfo.cs
+MyApiApp.csproj.nuget.dgspec.json
+project.assets.json
+project.nuget.cache
