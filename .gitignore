@@ -367,8 +367,6 @@ appsettings.json
 AssemblyInfo.cs
 
 *.cache
-
-
 *.csv
 data
 application_data
