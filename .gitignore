@@ -367,8 +367,11 @@ appsettings.json
 AssemblyInfo.cs
 
 *.cache
+
+
 *.csv
 data
 application_data
 training_checkpoints
+*.venv
 *.h5
