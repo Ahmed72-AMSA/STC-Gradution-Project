@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using STC.Models;
+using STC.Models.Chat_Service;
 
 namespace STC.Data.Context
 {
@@ -10,6 +11,8 @@ namespace STC.Data.Context
         { }
 
         public DbSet<SignUp> Users { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
