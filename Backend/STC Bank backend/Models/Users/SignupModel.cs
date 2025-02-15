@@ -15,11 +15,21 @@ namespace STC.Models
         public string? UserName { get; set; }
 
 
+        public string? ChatRoom { get; set; } 
+
+        public string? ConnectionId { get; set; }
+    
+
 
 
         [Required(ErrorMessage = "Email Is Required")]
         [EmailAddress(ErrorMessage = "Invalid Format For Email")]
         public string? Email { get; set; }
+
+
+
+        [EmailAddress(ErrorMessage = "Invalid Format For Email")]
+        public string? Role { get; set; } = "User";
 
 
 
