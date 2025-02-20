@@ -329,3 +329,4 @@ D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\b
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\System.Net.ServerSentEvents.dll
 D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\studying section\projects\GP\STC-Gradution-Project\Backend\STC Bank backend\bin\Debug\net9.0\RestSharp.dll
