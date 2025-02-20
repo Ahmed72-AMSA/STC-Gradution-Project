@@ -12,6 +12,8 @@ namespace STC.Data.Context
 
         public DbSet<SignUp> Users { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<UploadedFile> UploadedFiles { get; set; }
+
 
 
 

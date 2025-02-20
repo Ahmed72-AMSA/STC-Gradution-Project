@@ -58,7 +58,6 @@ namespace STC.Controllers
             // Log the generated OTP for debugging
             Console.WriteLine($"Generated OTP: {otp} for Phone Number: {user.PhoneNumber}");
 
-            // Send the OTP via SMS
             _smsService.Send(user.PhoneNumber, $"Your OTP is {otp}. It expires in 5 minutes");
 
             return Ok(new
