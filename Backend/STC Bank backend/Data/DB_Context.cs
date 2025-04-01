@@ -10,9 +10,12 @@ namespace STC.Data.Context
             : base(options)
         { }
 
+
         public DbSet<SignUp> Users { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
+        public DbSet<BlacklistedFile> BlacklistedFiles { get; set; }
+
 
 
 

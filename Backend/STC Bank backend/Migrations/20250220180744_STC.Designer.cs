@@ -12,7 +12,7 @@ using STC.Data.Context;
 namespace MyApiApp.Migrations
 {
     [DbContext(typeof(STCSystemDbContext))]
-    [Migration("20250219194113_STC")]
+    [Migration("20250220180744_STC")]
     partial class STC
     {
         /// <inheritdoc />
@@ -24,6 +24,25 @@ namespace MyApiApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("BlacklistedFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("BlockedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FileHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlacklistedFiles");
+                });
 
             modelBuilder.Entity("STC.Models.Chat_Service.Message", b =>
                 {
@@ -105,7 +124,7 @@ namespace MyApiApp.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("UploadedFile", b =>
+            modelBuilder.Entity("STC.Models.UploadedFile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -113,23 +132,44 @@ namespace MyApiApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<byte[]>("FileData")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("FileHash")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool?>("IsMalicious")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Message")
+                    b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UploadedAt")
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("FileType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HarmlessCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaliciousCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ScanDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ScanDetailsJson")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SuspiciousCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalEngines")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UndetectedCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

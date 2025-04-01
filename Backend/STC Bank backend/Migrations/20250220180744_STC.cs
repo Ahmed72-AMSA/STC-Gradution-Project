@@ -12,6 +12,20 @@ namespace MyApiApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "BlacklistedFiles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BlockedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlacklistedFiles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Messages",
                 columns: table => new
                 {
@@ -36,10 +50,17 @@ namespace MyApiApp.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FileHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsMalicious = table.Column<bool>(type: "bit", nullable: true),
-                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UploadedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FileData = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    TotalEngines = table.Column<int>(type: "int", nullable: false),
+                    MaliciousCount = table.Column<int>(type: "int", nullable: false),
+                    HarmlessCount = table.Column<int>(type: "int", nullable: false),
+                    SuspiciousCount = table.Column<int>(type: "int", nullable: false),
+                    UndetectedCount = table.Column<int>(type: "int", nullable: false),
+                    ScanDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ScanDetailsJson = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -83,6 +104,9 @@ namespace MyApiApp.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "BlacklistedFiles");
+
             migrationBuilder.DropTable(
                 name: "Messages");
 
