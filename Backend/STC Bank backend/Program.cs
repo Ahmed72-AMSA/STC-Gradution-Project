@@ -14,8 +14,10 @@ builder.Services.AddDbContext<STCSystemDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Services configuration
+
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
+
 
 // CORS configuration
 builder.Services.AddCors(options =>
@@ -38,6 +40,7 @@ builder.Services.Configure<TwilioSettings>(builder.Configuration.GetSection("Twi
 builder.Services.AddTransient<ISMSService, SMSService>();
 builder.Services.AddTransient<IOTPService, OTPService>();
 builder.Services.AddSingleton<SharedDb>();
+builder.Services.AddSingleton<OnnxModelService>();
 var app = builder.Build();
 
 // Development-only middleware
@@ -59,6 +62,8 @@ app.UseCors("AllowReactApp");
 
 app.MapControllers();
 app.MapHub<ChatHub>("/chat");
+app.UseStaticFiles();
+
 
 // Run the application
 app.Run("http://localhost:5001");

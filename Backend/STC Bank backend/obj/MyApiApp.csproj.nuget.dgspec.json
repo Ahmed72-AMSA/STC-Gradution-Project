@@ -96,6 +96,18 @@
               "target": "Package",
               "version": "[9.0.1, )"
             },
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.ML.OnnxRuntime": {
+              "target": "Package",
+              "version": "[1.16.0, )"
+            },
+            "Microsoft.ML.OnnxTransformer": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "RestSharp": {
               "target": "Package",
               "version": "[112.1.0, )"

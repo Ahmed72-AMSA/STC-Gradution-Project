@@ -1,22 +1,22 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+namespace STC.Models{
 
 public class UploadedFile
 {
-    [Key]
     public int Id { get; set; }
-
     public string? FileName { get; set; }
 
+    
     public string? FileHash { get; set; }
-
-    public bool? IsMalicious { get; set; }
-
-    public string? Message { get; set; }
-
-    public DateTime? UploadedAt { get; set; } = DateTime.UtcNow;
-
-    [Column(TypeName = "varbinary(max)")]
-    public byte[]? FileData { get; set; }
+    public string? FilePath { get; set; }
+    public string? Status { get; set; } // "Malicious" or "Clean"
+    public string? FileType { get; set; }
+    public long FileSize { get; set; }
+    public int TotalEngines { get; set; }
+    public int MaliciousCount { get; set; }
+    public int HarmlessCount { get; set; }
+    public int SuspiciousCount { get; set; }
+    public int UndetectedCount { get; set; }
+    public DateTime ScanDate { get; set; }
+    public string? ScanDetailsJson { get; set; }
+}
 }
