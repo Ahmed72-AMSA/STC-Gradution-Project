@@ -12,7 +12,7 @@ using STC.Data.Context;
 namespace MyApiApp.Migrations
 {
     [DbContext(typeof(STCSystemDbContext))]
-    [Migration("20250220180744_STC")]
+    [Migration("20250403183357_STC")]
     partial class STC
     {
         /// <inheritdoc />
@@ -72,6 +72,40 @@ namespace MyApiApp.Migrations
                     b.ToTable("Messages");
                 });
 
+            modelBuilder.Entity("STC.Models.Complain", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Describtion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Recipient")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Solved")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("Complains");
+                });
+
             modelBuilder.Entity("STC.Models.SignUp", b =>
                 {
                     b.Property<int>("Id")
@@ -95,6 +129,9 @@ namespace MyApiApp.Migrations
 
                     b.Property<string>("Gmail")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsSuspended")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -174,6 +211,23 @@ namespace MyApiApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UploadedFiles");
+                });
+
+            modelBuilder.Entity("STC.Models.Complain", b =>
+                {
+                    b.HasOne("STC.Models.SignUp", "User")
+                        .WithOne("Complain")
+                        .HasForeignKey("STC.Models.Complain", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("STC.Models.SignUp", b =>
+                {
+                    b.Navigation("Complain")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

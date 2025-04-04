@@ -16,6 +16,9 @@ namespace STC.Data.Context
         public DbSet<UploadedFile> UploadedFiles { get; set; }
         public DbSet<BlacklistedFile> BlacklistedFiles { get; set; }
 
+        public DbSet<Complain> Complains { get; set; }
+
+
 
 
 
@@ -32,7 +35,16 @@ namespace STC.Data.Context
                 .IsUnique()
                 .HasDatabaseName("UserName");
 
+
+
+        modelBuilder.Entity<Complain>()
+        .HasOne(c => c.User)
+        .WithOne(u => u.Complain)
+        .HasForeignKey<Complain>(c => c.UserId)
+        .OnDelete(DeleteBehavior.Cascade);
+}
+
  
         }
     }
-}
+

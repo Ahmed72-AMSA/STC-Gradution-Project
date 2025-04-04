@@ -9,11 +9,9 @@ using STC.Services.ChatServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database configuration
 builder.Services.AddDbContext<STCSystemDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Services configuration
 
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
@@ -40,7 +38,6 @@ builder.Services.Configure<TwilioSettings>(builder.Configuration.GetSection("Twi
 builder.Services.AddTransient<ISMSService, SMSService>();
 builder.Services.AddTransient<IOTPService, OTPService>();
 builder.Services.AddSingleton<SharedDb>();
-builder.Services.AddSingleton<OnnxModelService>();
 var app = builder.Build();
 
 // Development-only middleware

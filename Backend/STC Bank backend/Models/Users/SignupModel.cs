@@ -28,7 +28,6 @@ namespace STC.Models
 
 
 
-        [EmailAddress(ErrorMessage = "Invalid Format For Email")]
         public string? Role { get; set; } = "User";
 
 
@@ -53,8 +52,16 @@ namespace STC.Models
 
 
         public string? Gmail { get; set; }
+        public bool IsSuspended { get; set; }
 
         public string? FacebookId{get;set;}
+
+
+        public virtual Complain? Complain { get; set; } 
+
+
+
+
 
 
 
