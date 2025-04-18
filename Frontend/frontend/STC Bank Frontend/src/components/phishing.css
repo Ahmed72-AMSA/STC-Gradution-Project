@@ -1,0 +1,157 @@
+/* Full page reset */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Background wrapper */
+  .phishing-form-wrapper {
+    background: url('../assets/phishing.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+  
+  /* Header */
+  .phishing-header {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 40px;
+    animation: fadeInSlide 1s ease-in-out;
+  }
+  
+  @keyframes fadeInSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Form container */
+  .phishing-form-container {
+    width: 100%;
+    margin-left: 23%;
+    max-width: 650px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 25px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    animation: fadeInPop 0.8s ease;
+  }
+  
+  @keyframes fadeInPop {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Inputs */
+  .phishing-input {
+    border-radius: 40px !important;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: 2px solid #ccc;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .phishing-input:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 8px rgba(220, 53, 69, 0.6);
+    outline: none;
+  }
+  
+  /* Labels */
+  .phishing-label {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    font-size: 1.2rem;
+    padding: 12px;
+    border-radius: 50px;
+    background: linear-gradient(to right, #dc3545, #ff6b6b);
+    border: none;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+  
+  button[type="submit"]:hover {
+    background: linear-gradient(to right, #c82333, #e4606d);
+    transform: scale(1.02);
+  }
+  
+  /* Alerts */
+  .alert {
+    font-size: 1.1rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    animation: fadeInPop 0.5s ease;
+  }
+  
+  /* Feature result block */
+  .phishing-result {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeInPop 0.8s ease;
+  }
+  
+  .phishing-result h5 {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .phishing-result ul {
+    padding-left: 0;
+  }
+  
+  .phishing-result li {
+    background: #f8f9fa;
+    margin-bottom: 8px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+  
+  /* Responsive Enhancements */
+  @media (max-width: 768px) {
+    .phishing-form-container {
+      padding: 25px;
+    }
+  
+    .phishing-header {
+      font-size: 2rem;
+    }
+  
+    .phishing-result {
+      font-size: 0.95rem;
+    }
+  }
+  
