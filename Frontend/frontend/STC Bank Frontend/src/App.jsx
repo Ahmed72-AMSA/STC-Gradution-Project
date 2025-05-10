@@ -4,6 +4,11 @@ import { gapi } from 'gapi-script';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Chat from './components/Chat';
+import PhishingURLForm from './components/PhishingURLForm';
+import CreditForm from './components/CreditForm';
+import Home from './components/Home';
+
+
 
 function App() {
   const clientId = '837942369513-ka2sp66d2fepp9ida4p05ls23nt9rvr5.apps.googleusercontent.com';
@@ -26,6 +31,12 @@ function App() {
       <Route path="/" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/chat" element={<Chat />} />
+      <Route path="/loan" element={<CreditForm />} />
+      <Route path="/phishing" element={<PhishingURLForm />} />
+      <Route path="/Home" element={<Home />} />
+
+
+
 
       </Routes>
     </Router>

@@ -1,0 +1,101 @@
+.credit-form-wrapper {
+    background-image: url('../assets/loanapp.jpg'); /* Change path as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: auto;
+  }
+
+
+
+
+.Loan-header {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0d6efd; /* Bootstrap primary color */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 40px;
+    background: linear-gradient(90deg, #0d6efd, #17a2b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: fadeInSlideDown 1s ease-in-out;
+  }
+  
+  /* Animation for smooth entrance */
+  @keyframes fadeInSlideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  .credit-form-container {
+    max-width: 1000px;
+    padding: 60px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.121);
+    border-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.211);
+    backdrop-filter: blur(7px);
+  }
+  
+  .credit-input {
+    border-radius: 40px;
+    padding: 12px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    transition: border-color 0.3s;
+  }
+  
+  .credit-input:focus {
+    border-color: #17a2b8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(23, 162, 184, 0.5);
+  }
+  
+  .credit-label {
+    font-weight: 600;
+    font-weight: bolder;
+    color: black ;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+
+
+  /* Style for the result section after form submission */
+.prediction-result {
+    background-color: rgba(255, 255, 255, 0.9); /* A soft background for better contrast */
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title for prediction result */
+.prediction-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* The text section of the result */
+.prediction-text {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+/* Large styled amount of loan result */
+.loan-amount {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #17a2b8; /* Accent color for emphasis */
+}
+  

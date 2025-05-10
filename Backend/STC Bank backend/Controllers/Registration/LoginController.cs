@@ -46,13 +46,21 @@ namespace STC.Controllers
                 return Unauthorized("Invalid Email or Password.");
             }
 
+        if (user.IsSuspended)  
+        { 
+
+        return Unauthorized("Your account is suspended. Please contact support.");
+        
+        
+        }
+
+
             // Validate the password
             if (user.Password != loginRequest.Password)
             {
                 return Unauthorized("Invalid Email or Password.");
             }
 
-            // Generate a 6-digit OTP
             var otp = _otpService.GenerateOtp();
 
             // Log the generated OTP for debugging
@@ -65,6 +73,9 @@ namespace STC.Controllers
                 Message = $"Login successful. OTP sent to your registered phone number."
             });
         }
+
+
+
 
         [HttpPost("VerifyOtp")]
         public IActionResult VerifyOtp([FromBody] OtpVerificationRequest otpRequest)
@@ -187,6 +198,71 @@ public async Task<IActionResult> FacebookLogin([FromBody] FacebookLogin FBLogin)
 
 
     }
+
+[HttpPost("SuspendUser/{userId}")]
+public async Task<IActionResult> SuspendUser(int userId)
+{
+    var user = await _context.Users.FindAsync(userId);
+    if (user == null)
+    {
+        return NotFound("User not found.");
+    }
+
+    user.IsSuspended = true;
+    await _context.SaveChangesAsync();
+
+    return Ok(new { Message = "User account has been suspended successfully." });
+}
+
+
+
+
+[HttpPost("UnsuspendUser/{userId}")]
+public async Task<IActionResult> UnsuspendUser(int userId)
+{
+    var user = await _context.Users.FindAsync(userId);
+    if (user == null)
+    {
+        return NotFound("User not found.");
+    }
+
+    user.IsSuspended = false;
+    await _context.SaveChangesAsync();
+
+    return Ok(new { Message = "User account has been unsuspended successfully." });
+}
+
+
+
+[HttpPost("ForgotPassword")]
+public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest forgotPasswordRequest)
+{
+    if (forgotPasswordRequest == null || string.IsNullOrWhiteSpace(forgotPasswordRequest.Gmail))
+    {
+        return BadRequest("Gmail is required.");
+    }
+
+    var user = await _context.Users
+        .FirstOrDefaultAsync(u => u.Gmail == forgotPasswordRequest.Gmail);
+
+    if (user == null)
+    {
+        return NotFound("User with the provided Gmail not found.");
+    }
+
+    var realPassword = user.Password; 
+
+    // Send the real password via SMS
+    _smsService.Send(user.PhoneNumber, $"Your password is: {realPassword}. Please use it to login.");
+
+    return Ok(new
+    {
+        Message = "Your password has been sent to your registered phone number."
+    });
+}
+
+
+
 }
 }
 

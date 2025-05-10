@@ -381,3 +381,4 @@ MyApiApp.csproj.nuget.dgspec.json
 project.assets.json
 project.nuget.cache
 MyApiApp.csproj
+*.vsidx
