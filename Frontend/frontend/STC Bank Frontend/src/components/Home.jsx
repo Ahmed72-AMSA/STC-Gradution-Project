@@ -1,12 +1,13 @@
 import React from "react";
 import Choose from "./Choose";
 import Hero from "./Hero";
-import Latest from "./Latest";
 import ChatBot from "./Chatbot";
 import Header from "./Header";
-
 import './Home.css'
 import ZakatCalculator from "./zakahCalculator";
+import Partners from "./partners";
+import Reports from "./Reports";
+
 const Home = () => {
   return (
     <>
@@ -15,7 +16,8 @@ const Home = () => {
       <ChatBot/>
       <Choose />
       <ZakatCalculator/>
-      <Latest />
+      <Partners />
+      <Reports/>
     </>
   );
 };

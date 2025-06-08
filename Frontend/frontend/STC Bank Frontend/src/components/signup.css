@@ -203,3 +203,203 @@
   margin-right: 10px !important; /* Spacing between icon and text */
   font-size: 20px !important; /* Icon size */
 }
+
+/* Facebook Modal Styles */
+.facebook-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.facebook-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.facebook-modal h2 {
+  color: #1877f2; /* Facebook blue */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.facebook-modal p {
+  color: #65676b;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.facebook-modal-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.facebook-modal-input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #1c1e21;
+  font-weight: 600;
+}
+
+.facebook-modal-input-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #dddfe2;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.facebook-modal-input-group input:focus {
+  border-color: #1877f2;
+  outline: none;
+}
+
+.facebook-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.facebook-modal-submit {
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.facebook-modal-submit:hover {
+  background-color: #166fe5;
+}
+
+.facebook-modal-cancel {
+  background-color: #e4e6eb;
+  color: #1c1e21;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.facebook-modal-cancel:hover {
+  background-color: #d8dadf;
+}
+
+
+
+
+
+
+
+
+.google-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.google-modal {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.google-modal h2 {
+  color: #ca4747; /* Google blue */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.google-modal-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.google-modal-input-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+}
+
+.google-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.google-modal-submit {
+  background-color: #ca4747;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.google-modal-cancel {
+  background-color: #f1f3f4;
+  color: #3c4043;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .facebook-modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .facebook-modal-buttons {
+    flex-direction: column;
+  }
+  
+  .facebook-modal-submit,
+  .facebook-modal-cancel {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}

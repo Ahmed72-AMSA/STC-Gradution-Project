@@ -46,7 +46,7 @@
   }
   
   .zakat-calculator-container .cart-form_header {
-    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%) !important;
+    background: linear-gradient(135deg, #0de647 0%, #a1dd91 100%) !important;
     color: white !important;
     font-size: 1.4rem !important;
     font-weight: 600 !important;
@@ -95,9 +95,9 @@
   }
   
   .zakat-calculator-container input[type="number"]:focus {
-    border-color: #d32f2f;
+    border-color: #0fda16;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.2);
+    box-shadow: 0 0 0 3px rgba(55, 212, 11, 0.2);
     background-color: #fff;
   }
   
@@ -144,7 +144,7 @@
   .zakat-calculator-container .cart-total_head {
     font-size: 1.5rem !important;
     font-weight: 700 !important;
-    color: #2a4365 !important;
+    color: #149548 !important;
     padding-bottom: 1.25rem !important;
     border-bottom: 2px solid #e2e8f0 !important;
     margin-bottom: 1.5rem !important;
@@ -161,13 +161,13 @@
   
   .zakat-calculator-container .result-label {
     font-weight: 500;
-    color: #4a5568;
+    color: #276b38;
     font-size: 1.05rem;
   }
   
   .zakat-calculator-container .result-value {
     font-weight: 600;
-    color: #d32f2f;
+    color: #67ca5c;
     font-size: 1.1rem;
   }
   
@@ -191,13 +191,13 @@
   
   .zakat-calculator-container .total-label {
     font-weight: 700;
-    color: #2a4365;
+    color: #2a6937;
     font-size: 1.2rem;
   }
   
   .zakat-calculator-container .total-value {
     font-weight: 700;
-    color: #d32f2f;
+    color: #8ae263;
     font-size: 1.4rem;
   }
   
@@ -209,7 +209,7 @@
   }
   
   .zakat-calculator-container .calculate-btn {
-    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+    background: linear-gradient(135deg, #61e174 0%, #32b91a 100%);
     color: white;
     border: none;
     padding: 1.1rem 1.5rem;
@@ -226,13 +226,13 @@
   
   .zakat-calculator-container .calculate-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(211, 47, 47, 0.2);
+    box-shadow: 0 6px 12px rgba(42, 165, 12, 0.2);
   }
   
   .zakat-calculator-container .reset-btn {
     background: #ffffff;
-    color: #d32f2f;
-    border: 2px solid #d32f2f;
+    color: #26e164;
+    border: 2px solid #65dc88;
     padding: 1rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;

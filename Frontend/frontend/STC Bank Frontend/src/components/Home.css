@@ -7,7 +7,7 @@
 }
 :root{
 --Dark-Blue: hsl(233, 26%, 24%);
---Lime-Green: hsl(136, 65%, 51%);
+--Lime-Green: lab(74.83% -64.91 46.85);
 --Bright-Cyan: hsl(192, 70%, 51%);
 --Grayish-Blue: hsl(233, 8%, 62%);
 --Light-Grayish-Blue: hsl(220, 16%, 96%);
@@ -175,6 +175,11 @@ button{
   background: #fafafa;
   padding: 8%;
 }
+
+.home-reports{
+  background: white;
+  padding: 8%;
+}
 .latest-heading{
   font-size: 3rem;
   color: var(--Dark-Blue);
@@ -213,12 +218,50 @@ button{
 .card-block h4:hover{
   color: var(--Lime-Green);
 }
-
-.text-block{
-  padding: 1rem 2.5rem;
-  color: grey;
-  line-height: 2rem;
+/* Card Action Button Styling */
+.card-action-btn {
+  display: inline-block;
+  padding: 10px 5px;
+  margin-top: 1rem;
+  background: linear-gradient(to right, var(--Lime-Green), var(--Bright-Cyan));
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 75%;
+  margin-left: 20px;
+  text-align: center;
 }
+
+.card-action-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-action-btn:active {
+  transform: translateY(0);
+}
+
+/* For better integration with text */
+.author {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Add this to make it work better within the card text */
+.text-block {
+  position: relative;
+  padding-bottom: 2rem; /* Add space for the button */
+}
+
+
 .card-block p{
   font-size: 1.3rem;
   color: grey;

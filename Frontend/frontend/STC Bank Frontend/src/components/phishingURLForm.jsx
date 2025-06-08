@@ -139,7 +139,7 @@ const PhishingURLForm = () => {
                 </Form.Group>
               ))}
 
-              <Button variant="danger" type="submit" className="w-100" disabled={loading}>
+              <Button variant="danger" type="submit" className="w-100 submit-phishing" disabled={loading}>
                 {loading ? 'Analyzing...' : 'Check URL'}
               </Button>
             </Form>

@@ -21,7 +21,14 @@ const Chatbot = () => {
       }, []);
 
 
+      const defaultQuestions = [
+        { question: "loan", answer: "To apply for a loan, visit the loan section on our app or website, fill in your details, and submit the required documents. Our team will review and get back to you shortly." },
+        { question: "Withdraw", answer: "You can withdraw money using any of our ATMs or through online banking by transferring to a linked account." },
+        { question: "Check Your Balance", answer: "Log into your account via our app or website, and your current balance will be displayed on the dashboard." }
+      ];
 
+
+      
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([
     {
@@ -140,6 +147,27 @@ const Chatbot = () => {
     setFilePreview(null);
   };
 
+  const handleDefaultQuestion = (item) => {
+    const userMsg = {
+      type: 'user',
+      content: item.question,
+      attachment: null
+    };
+    const botMsg = {
+      type: 'bot',
+      content: item.answer,
+      attachment: null
+    };
+    setMessages(prev => [...prev, userMsg, botMsg]);
+  };
+
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+
   useEffect(() => {
     // Auto-scroll to bottom when messages change
     if (chatBodyRef.current) {
@@ -173,7 +201,15 @@ const Chatbot = () => {
           </button>
         </div>
 
+
         <div className="chat-body" ref={chatBodyRef}>
+        <div className="default-questions">
+            {defaultQuestions.map((item, idx) => (
+              <button key={idx} className="default-question-btn" onClick={() => handleDefaultQuestion(item)}>
+                {item.question}
+              </button>
+            ))}
+          </div>
           {messages.map((msg, index) => (
             <div key={index} className={`message ${msg.type}-message ${msg.isError ? 'error' : ''}`}>
               {msg.type === 'bot' && (
@@ -216,7 +252,7 @@ const Chatbot = () => {
               required
             />
             <div className="chat-controls">
-              <button type="button" className="material-symbols-outlined">sentiment_satisfied</button>
+
               <div className={`file-upload-wrapper ${filePreview ? 'file-uploaded' : ''}`}>
                 <input 
                   type="file" 
@@ -245,7 +281,6 @@ const Chatbot = () => {
                   </button>
                 )}
               </div>
-              <button type="submit" className="material-symbols-rounded">arrow_upward</button>
             </div>
           </form>
         </div>
