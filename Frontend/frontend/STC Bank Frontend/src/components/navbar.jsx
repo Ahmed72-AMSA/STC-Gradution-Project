@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Button, Container, Dropdown } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { FaBell, FaUserCircle, FaSignOutAlt } from 'react-icons/fa';
+import { FaBell, FaUserCircle, FaSignOutAlt, FaShieldAlt } from 'react-icons/fa';
 import logo from "../images/dashlogo.jpg";
 import './dashboard.css';
 
@@ -28,6 +28,14 @@ const DashboardNavbar = () => {
                 
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
                     <Nav className="align-items-center">
+                        <Button 
+                            variant="link" 
+                            className="dashboard-nav-link"
+                            onClick={() => navigate('/dashboard/virus-scan')}
+                        >
+                            <FaShieldAlt size={20} />
+                            <span className="ms-2">Virus Scanner</span>
+                        </Button>
                         <Button variant="link" className="dashboard-notification-btn">
                             <FaBell size={20} />
                             <span className="dashboard-notification-badge">3</span>

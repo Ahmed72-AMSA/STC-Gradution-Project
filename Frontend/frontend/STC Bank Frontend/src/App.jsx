@@ -12,6 +12,7 @@ import Chat from './components/Chat';
 import CreditForm from './components/CreditForm';
 import Home from './components/Home';
 import Profile from './components/ProfileIndex';
+import VirusTotalForm from './components/VirusTotalForm';
 
 // Dashboard Components
 import Sidebar from './components/Sidebar.jsx';
@@ -52,6 +53,7 @@ function App() {
                 <Sidebar>
                   <Routes>
                     <Route path="Users" element={<Users/>} />
+                    <Route path="virus-scan" element={<VirusTotalForm/>} />
                   </Routes>
                 </Sidebar>
               </>

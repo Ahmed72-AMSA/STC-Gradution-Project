@@ -8,7 +8,8 @@ import {
     FaQuestionCircle,
     FaPiggyBank,
     FaHandHoldingUsd,
-    FaShieldAlt
+    FaShieldAlt,
+    FaVirus
 } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import './dashboard.css';
@@ -21,6 +22,12 @@ const DashboardSidebar = ({ children }) => {
             name: "Users Managment",
             icon: <FaPerson />,
             badge: ""
+        },
+        {
+            path: "/dashboard/virus-scan",
+            name: "Virus Scanner",
+            icon: <FaVirus />,
+            badge: "New"
         },
         {
             path: "/dashboard/accounts",
