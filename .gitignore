@@ -382,3 +382,7 @@ project.assets.json
 project.nuget.cache
 MyApiApp.csproj
 *.vsidx
+*.png
+*.jpg
+*.pdf
+*.txt
